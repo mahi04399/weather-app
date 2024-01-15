@@ -28,8 +28,9 @@ class WeatherApp extends React.Component {
 
   render() {
     return (
-      <div>
-        <div id="title" className="">Weather Now</div>
+      <div>  
+        <div id="title" className="">
+          Weather Now</div>
         <div id="main" className="">
           <section id="temperature">
             <div id="label">Temperature</div>
