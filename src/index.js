@@ -6,9 +6,9 @@ class WeatherApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      temperature: "27 deg C",
-      humidity: "50%",
-      pressure: "1 atm"
+      temperature: 27,
+      humidity: 50,
+      pressure: "1"
     }
     this.getWeather = this.getWeather.bind(this);
   }
@@ -17,9 +17,9 @@ class WeatherApp extends React.Component {
     let apiUrl = "https://62698cf5-48ab-46ad-83b7-25641f747d8e-00-2guyur95g356u.sisko.replit.dev/weatherData";
     fetch(apiUrl).then(data => data.json()).then((res) => {
       this.setState(state => ({
-        temperature: Math.round(((res.temperature - 32) * 5) / 9) + " deg C",
-        humidity: res.humidity + "%",
-        pressure: res.pressure + " atm"
+        temperature: Math.round(((res.temperature - 32) * 5) / 9),
+        humidity: res.humidity,
+        pressure: Math.round((res.pressure / 1000) * 0.9869),
       }));
     }).catch(e => {
       console.log(e.message);
@@ -33,15 +33,15 @@ class WeatherApp extends React.Component {
         <div id="main" className="">
           <section id="temperature">
             <div id="label">Temperature</div>
-            <div id="value">{this.state.temperature}</div>
+            <div id="value">{this.state.temperature} deg C</div>
           </section>
           <section id="humidity">
             <div id="label">Relative-Humidity</div>
-            <div id="value">{this.state.humidity}</div>
+            <div id="value">{this.state.humidity}%</div>
           </section>
           <section id="pressure">
             <div id="label">Pressure</div>
-            <div id="value">{this.state.pressure}</div>
+            <div id="value">{this.state.pressure} atm</div>
           </section>
           <button id="getWeather" onClick={this.getWeather}>Get weather</button>
         </div>

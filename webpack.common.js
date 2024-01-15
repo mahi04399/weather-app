@@ -3,10 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
   module: {
     rules: [
       {
@@ -17,7 +13,9 @@ module.exports = {
         },
       },{
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', //2. Injects css into DOM
+         'css-loader' //1. Turns css into commonjs
+        ],
       }
     ],
   },
@@ -26,7 +24,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: './public/template.html',
     }),
   ],
   devServer: {
