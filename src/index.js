@@ -14,7 +14,7 @@ class WeatherApp extends React.Component {
   }
 
   getWeather(event) {
-    let apiUrl = "https://62698cf5-48ab-46ad-83b7-25641f747d8e-00-2guyur95g356u.sisko.replit.dev/weatherData";
+    let apiUrl = "https://weather-app-lnd8.onrender.com/weatherData";
     fetch(apiUrl).then(data => data.json()).then((res) => {
       this.setState(state => ({
         temperature: Math.round(((res.temperature - 32) * 5) / 9),
